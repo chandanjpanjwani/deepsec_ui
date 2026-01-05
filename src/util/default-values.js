@@ -20,7 +20,12 @@ function getAppDataRoot () {
   }
 }
 
-const resultsDirPath = path.join(getAppDataRoot(), "Deepsec", "result_files");
+let resultsDirPath = path.join(getAppDataRoot(), "Deepsec", "result_files");
+
+// For Docker Image: setting the path to the result files
+if (process.platform == "linux") {
+  resultsDirPath = path.join(HOME, ".deepsec", "result_files");
+}
 
 const defaultValues = {
     showHelpers: true,

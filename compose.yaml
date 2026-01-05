@@ -1,0 +1,16 @@
+services:
+  deepsecui:
+    image: deepsecui
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8080:8080
+    volumes:
+      - result_files:/home/node/.deepsec/result_files
+
+volumes:
+  result_files:
+    driver: local
